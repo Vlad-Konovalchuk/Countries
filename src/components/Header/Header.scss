@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  background: #eee;
+}
+
+ul,
+li {
+  all: unset;
+}
+
+nav {
+  flex: 2;
+}
+
+.header__logo {
+  flex: 1;
+}
+
+.header__logo>img {
+  width: 100%;
+  max-width: 100px;
+  height: 30%;
+}
+
+.header__list {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.3rem;
+  color: #424242;
+
+}
+
+.header__item {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+
+
+  &:hover {
+    background: #464641;
+    color: #fff;
+    border-radius: 5px;
+  }
+
+
+}
