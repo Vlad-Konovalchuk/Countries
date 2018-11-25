@@ -2,7 +2,7 @@
   "name": "fisrt",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https:/vlad-konovalchuk/.github.io/Country-list/",
+  "homepage":"https:/vlad-konovalchuk.github.io/Countries",
   "dependencies": {
     "axios": "^0.18.0",
     "node-sass": "^4.10.0",
