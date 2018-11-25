@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Vlad-Konovalchuk.github.io/Country-list/precache-manifest.6236167a4f5cc3299082156ca37502a0.js"
+  "/Vlad-Konovalchuk.github.io/Countries/precache-manifest.dcbeb84063b042900ea73ebe8e8995b0.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Vlad-Konovalchuk.github.io/Country-list/index.html", {
+workbox.routing.registerNavigationRoute("/Vlad-Konovalchuk.github.io/Countries/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
