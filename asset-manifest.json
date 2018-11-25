@@ -1,14 +1,14 @@
 {
-  "main.css": "/vlad-konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css",
-  "main.js": "/vlad-konovalchuk.github.io/Countries/static/js/main.357260f1.chunk.js",
-  "main.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/main.357260f1.chunk.js.map",
-  "static/js/1.7cd83a5b.chunk.js": "/vlad-konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js",
-  "static/js/1.7cd83a5b.chunk.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js.map",
-  "runtime~main.js": "/vlad-konovalchuk.github.io/Countries/static/js/runtime~main.d31156d2.js",
-  "runtime~main.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/runtime~main.d31156d2.js.map",
-  "static/media/logo.svg": "/vlad-konovalchuk.github.io/Countries/static/media/logo.5d5d9eef.svg",
-  "static/css/main.73d1090f.chunk.css.map": "/vlad-konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css.map",
-  "index.html": "/vlad-konovalchuk.github.io/Countries/index.html",
-  "precache-manifest.4f7445d04c00af26cb874bccb354e547.js": "/vlad-konovalchuk.github.io/Countries/precache-manifest.4f7445d04c00af26cb874bccb354e547.js",
-  "service-worker.js": "/vlad-konovalchuk.github.io/Countries/service-worker.js"
+  "main.css": "/Countries/static/css/main.73d1090f.chunk.css",
+  "main.js": "/Countries/static/js/main.ae0691f7.chunk.js",
+  "main.js.map": "/Countries/static/js/main.ae0691f7.chunk.js.map",
+  "static/js/1.7cd83a5b.chunk.js": "/Countries/static/js/1.7cd83a5b.chunk.js",
+  "static/js/1.7cd83a5b.chunk.js.map": "/Countries/static/js/1.7cd83a5b.chunk.js.map",
+  "runtime~main.js": "/Countries/static/js/runtime~main.009e373d.js",
+  "runtime~main.js.map": "/Countries/static/js/runtime~main.009e373d.js.map",
+  "static/media/logo.svg": "/Countries/static/media/logo.5d5d9eef.svg",
+  "static/css/main.73d1090f.chunk.css.map": "/Countries/static/css/main.73d1090f.chunk.css.map",
+  "index.html": "/Countries/index.html",
+  "precache-manifest.dc448c57de4190ab31b5845e61ecaebf.js": "/Countries/precache-manifest.dc448c57de4190ab31b5845e61ecaebf.js",
+  "service-worker.js": "/Countries/service-worker.js"
 }
