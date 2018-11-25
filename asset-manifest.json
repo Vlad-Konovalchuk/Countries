@@ -1,14 +1,14 @@
 {
-  "main.css": "/Vlad-Konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css",
-  "main.js": "/Vlad-Konovalchuk.github.io/Countries/static/js/main.430e1417.chunk.js",
-  "main.js.map": "/Vlad-Konovalchuk.github.io/Countries/static/js/main.430e1417.chunk.js.map",
-  "static/js/1.7cd83a5b.chunk.js": "/Vlad-Konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js",
-  "static/js/1.7cd83a5b.chunk.js.map": "/Vlad-Konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js.map",
-  "runtime~main.js": "/Vlad-Konovalchuk.github.io/Countries/static/js/runtime~main.21f456c9.js",
-  "runtime~main.js.map": "/Vlad-Konovalchuk.github.io/Countries/static/js/runtime~main.21f456c9.js.map",
-  "static/media/logo.svg": "/Vlad-Konovalchuk.github.io/Countries/static/media/logo.5d5d9eef.svg",
-  "static/css/main.73d1090f.chunk.css.map": "/Vlad-Konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css.map",
-  "index.html": "/Vlad-Konovalchuk.github.io/Countries/index.html",
-  "precache-manifest.dcbeb84063b042900ea73ebe8e8995b0.js": "/Vlad-Konovalchuk.github.io/Countries/precache-manifest.dcbeb84063b042900ea73ebe8e8995b0.js",
-  "service-worker.js": "/Vlad-Konovalchuk.github.io/Countries/service-worker.js"
+  "main.css": "/vlad-konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css",
+  "main.js": "/vlad-konovalchuk.github.io/Countries/static/js/main.357260f1.chunk.js",
+  "main.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/main.357260f1.chunk.js.map",
+  "static/js/1.7cd83a5b.chunk.js": "/vlad-konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js",
+  "static/js/1.7cd83a5b.chunk.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/1.7cd83a5b.chunk.js.map",
+  "runtime~main.js": "/vlad-konovalchuk.github.io/Countries/static/js/runtime~main.d31156d2.js",
+  "runtime~main.js.map": "/vlad-konovalchuk.github.io/Countries/static/js/runtime~main.d31156d2.js.map",
+  "static/media/logo.svg": "/vlad-konovalchuk.github.io/Countries/static/media/logo.5d5d9eef.svg",
+  "static/css/main.73d1090f.chunk.css.map": "/vlad-konovalchuk.github.io/Countries/static/css/main.73d1090f.chunk.css.map",
+  "index.html": "/vlad-konovalchuk.github.io/Countries/index.html",
+  "precache-manifest.4f7445d04c00af26cb874bccb354e547.js": "/vlad-konovalchuk.github.io/Countries/precache-manifest.4f7445d04c00af26cb874bccb354e547.js",
+  "service-worker.js": "/vlad-konovalchuk.github.io/Countries/service-worker.js"
 }
