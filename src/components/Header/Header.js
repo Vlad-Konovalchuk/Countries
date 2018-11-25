@@ -7,7 +7,7 @@ const Header = ({logo})=> {
     <header className="header">
       <div className="header__logo">
       </div>
-      <nav>
+      <nav className="header__navigation">
         <ul className="header__list">
           <li className="header__item">
             <Link to='/'>Home</Link>

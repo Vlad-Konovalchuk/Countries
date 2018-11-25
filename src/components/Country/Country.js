@@ -36,7 +36,7 @@ export default class Country extends Component {
         )
       }
       return(
-        <section>
+        <sectio className="country-item">
         <div className="country-header">
         <h1>{city.name}</h1>
           <div className="country-flag">
@@ -56,9 +56,9 @@ export default class Country extends Component {
             {city.topLevelDomain.map(dom=><li>{city.dom}</li>)}
             </ul>
           </li>
-          <li>
-            Geographic location:
-              <ul>
+          <li class="country-geo">
+            <strong>Geographic location:</strong>
+              <ul className="country__sublist">
                 <li>
                 <strong>Region: </strong> 
                 {city.region}
@@ -81,7 +81,7 @@ export default class Country extends Component {
             </ul>
           </li>
         </ul>
-        </section>
+        </sectio>
       )
     }
   }

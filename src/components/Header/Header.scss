@@ -1,7 +1,7 @@
 .header {
   display: flex;
-  align-items: center;
   background: #eee;
+  align-items: center;
 }
 
 ul,
@@ -9,31 +9,33 @@ li {
   all: unset;
 }
 
-nav {
+.header__navigation {
   flex: 2;
 }
 
-.header__logo {
-  flex: 1;
-}
+// .header__logo {
+//   flex: 1;
+// }
 
 .header__logo>img {
   width: 100%;
-  max-width: 100px;
   height: 30%;
+  max-width: 100px;
 }
 
 .header__list {
   display: flex;
-  justify-content: space-around;
+  padding: 0.7rem;
+  justify-content: center;
+  align-items: center;
   font-size: 1.3rem;
   color: #424242;
 
 }
 
 .header__item {
-  cursor: pointer;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 
 
   &:hover {
