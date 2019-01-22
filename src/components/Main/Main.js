@@ -1,6 +1,5 @@
 import React from 'react';
 import './Main.scss';
-import BarChat from '../BarChat';
 
 
 
@@ -13,7 +12,6 @@ const Main = ()=>{
       </p>
       <ul>
         <h3>I`ll add more infomation and features soon</h3>
-        <BarChat/>
       </ul>
     </main>
   )
