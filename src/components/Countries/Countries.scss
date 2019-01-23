@@ -18,6 +18,12 @@ thead {
     height: 31px;
     font-size: 1.5rem;
   }
+
+  .regions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
 
 tbody {
@@ -28,6 +34,7 @@ tbody {
   tr:hover {
     background: #eee;
   }
+
   td:not(:first-child) {
     text-align: center;
   }

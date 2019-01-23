@@ -12,19 +12,40 @@ export default class Countries extends Component {
         loading: false,
         filterKey: null,
         sortKey: null,
-        regions:[]
+        regions: [],
+        sorted: false,
+    };
+
+    handleFilter = (e) => {
+        const key = e.target.value;
+        console.log(e);
+        this.setState({filterKey:key},() => this.filterCountries())
     };
 
     filterCountries = () => {
         const {countries, filterKey} = this.state;
-        if (filterKey === '' || filterKey === null) {
-            this.setState({filteredCountries: countries});
+        if (filterKey === null) {
             return;
         } else {
             const newArr = countries.filter(country => country.region === filterKey);
             this.setState({filteredCountries: newArr});
         }
-    }
+    };
+    handleSort = (key) => {
+        this.setState({sortKey: key}, () => this.sortCountries())
+    };
+    sortCountries = () => {
+        const {countries, sortKey, sorted} = this.state;
+        if (sortKey === null) {
+            return;
+        } else if (sorted) {
+            const newArr = countries.reverse();
+            this.setState({filteredCountries: newArr});
+        } else {
+            const newArr = countries.sort((a, b) => a[sortKey] - b[sortKey]);
+            this.setState({filteredCountries: newArr, sorted: true});
+        }
+    };
 
     async componentDidMount() {
         this.setState({loading: !this.state.loading});
@@ -33,8 +54,9 @@ export default class Countries extends Component {
             const regions = response.data.map(item => item.region);
             this.setState({
                 countries: response.data,
-                regions
-            }, () => this.filterCountries());
+                filteredCountries: response.data,
+                regions: [...new Set(regions)]
+            });
         } catch (e) {
             throw new Error(e.message);
         } finally {
@@ -44,7 +66,7 @@ export default class Countries extends Component {
     }
 
     render() {
-        const {countries, loading} = this.state;
+        const {filteredCountries, loading, regions} = this.state;
         if (loading) {
             return (
                 <main className='main_content'>
@@ -58,18 +80,27 @@ export default class Countries extends Component {
                     <thead className="country-table__head">
                     <tr>
                         <th>Countries</th>
-                        <th>
-                            <select name="changeregion">
-                                {countries.map(item => <option key={item.region}
-                                                               value={item.region}>{item.region}</option>)}
-                            </select>
+                        <th className='regions'>
+                            Regions
+                            {<select name="changeregion" onChange={(e)=>this.handleFilter(e)}>
+                                {regions.map((item, index) => {
+                                    if (item.length > 0) {
+                                        return (
+                                            <option key={index}
+                                                    value={item}
+                                            >
+                                                {item}
+                                            </option>)
+                                    }
+                                })}
+                            </select>}
                         </th>
-                        <th>Area</th>
-                        <th>Population</th>
+                        <th onClick={() => this.handleSort('area')}>Area</th>
+                        <th onClick={() => this.handleSort('population')}>Population</th>
                     </tr>
                     </thead>
                     <tbody className="country-table__list">
-                    {countries.map(item =>
+                    {filteredCountries.map(item =>
                         <tr key={item.numericCode}>
                             <td><Link to={`/countries/${item.name}`}>{item.name}</Link></td>
                             <td>{item.region}</td>
