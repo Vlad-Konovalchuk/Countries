@@ -6,7 +6,6 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Countries from './components/Countries';
 import Country from './components/Country';
-import Car from './Car';
 
 import './App.css';
 

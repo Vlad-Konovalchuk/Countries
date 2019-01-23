@@ -15,6 +15,6 @@ const Main = ()=>{
       </ul>
     </main>
   )
-}
+};
 
 export default Main;

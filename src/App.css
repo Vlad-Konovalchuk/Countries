@@ -3,6 +3,6 @@
 }
 
 a {
-  all: unset !important;
+  all: unset;
   color: inherit;
 }

@@ -15,7 +15,6 @@ const Header = ({logo})=> {
           <li className="header__item">
           <Link to='/countries'>Countries</Link>
           </li>
-          <li className="header__item">Films</li>
           <li className="header__item">Games</li>
           <li className="header__item">Contacts</li>
         </ul>
