@@ -8,10 +8,11 @@ th,
 td {
   border: 1px solid #424242ad;
   font-size: 1.3rem;
+  width: 100%;
 }
 
 thead {
-  background: #05cf05;
+  background: #3e6a98;
   color: #eee;
 
   th {
@@ -19,7 +20,15 @@ thead {
     font-size: 1.5rem;
   }
 
+  .sorting {
+    cursor: pointer;
+    &:hover {
+      background-color: darken(#3e6a98,20%);
+    }
+  }
+
   .regions {
+    width: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -38,4 +47,13 @@ tbody {
   td:not(:first-child) {
     text-align: center;
   }
+}
+
+
+.select-region {
+  border-radius: 4px;
+  padding: 0.2rem;
+  border: none;
+  background-color: #3a3846;
+  color: #fafafa;
 }

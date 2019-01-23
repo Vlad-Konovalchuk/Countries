@@ -1,10 +1,10 @@
 import React, {
-    Component
+    PureComponent
 } from 'react';
 import axios from 'axios';
 import './Country.scss'
 
-export default class Country extends Component {
+export default class Country extends PureComponent {
     state = {
         city: [],
         loading: false
@@ -61,20 +61,20 @@ export default class Country extends Component {
                                 {city.region}
                             </li>
                             <li>
-                                <strong>Sub-regio: </strong>{city.subregion}
+                                <strong>Sub-region: </strong>{city.subregion}
                             </li>
                         </ul>
                     </li>
                     <li>
                         <strong>Languages: </strong>
-                        <ul>
+                        <ul className="lang">
                             {city.languages.map(lang => <li>{lang.name}</li>)}
                         </ul>
                     </li>
                     <li>
                         <strong>National currencies: </strong>
                         <ul>
-                            {city.currencies.map(cur => <li>{cur.name} {cur.symbol}</li>)}
+                            {city.currencies.map(cur => <li>{cur.name}({cur.symbol})</li>)}
                         </ul>
                     </li>
                 </ul>

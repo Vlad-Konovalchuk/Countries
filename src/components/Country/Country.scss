@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .country-header {
@@ -62,6 +63,7 @@
 }
 
 .geo-location {
+  width: 100%;
   margin: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -79,8 +81,16 @@
   }
 span {
   display: block;
+  text-align: center;
 }
   &:hover {
     transform: scale(1.2);
+  }
+}
+
+.lang {
+  li:not(:last-child)::after{
+    content: ',';
+    display: inline-block;
   }
 }

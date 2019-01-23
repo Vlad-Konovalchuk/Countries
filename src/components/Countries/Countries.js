@@ -19,7 +19,7 @@ export default class Countries extends Component {
     handleFilter = (e) => {
         const key = e.target.value;
         console.log(e);
-        this.setState({filterKey:key},() => this.filterCountries())
+        this.setState({filterKey: key}, () => this.filterCountries())
     };
 
     filterCountries = () => {
@@ -42,7 +42,7 @@ export default class Countries extends Component {
             const newArr = countries.reverse();
             this.setState({filteredCountries: newArr});
         } else {
-            const newArr = countries.sort((a, b) => a[sortKey] - b[sortKey]);
+            const newArr = countries.sort((a, b) => Number(a[sortKey]) - Number(b[sortKey]));
             this.setState({filteredCountries: newArr, sorted: true});
         }
     };
@@ -62,7 +62,6 @@ export default class Countries extends Component {
         } finally {
             this.setState({loading: !this.state.loading});
         }
-        console.log(this.state)
     }
 
     render() {
@@ -82,7 +81,10 @@ export default class Countries extends Component {
                         <th>Countries</th>
                         <th className='regions'>
                             Regions
-                            {<select name="changeregion" onChange={(e)=>this.handleFilter(e)}>
+                            {<select
+                                className='select-region'
+                                name="changeregion"
+                                onChange={(e) => this.handleFilter(e)}>
                                 {regions.map((item, index) => {
                                     if (item.length > 0) {
                                         return (
@@ -95,8 +97,8 @@ export default class Countries extends Component {
                                 })}
                             </select>}
                         </th>
-                        <th onClick={() => this.handleSort('area')}>Area</th>
-                        <th onClick={() => this.handleSort('population')}>Population</th>
+                        <th className='sorting' onClick={() => this.handleSort('area')}>Area</th>
+                        <th className='sorting' onClick={() => this.handleSort('population')}>Population</th>
                     </tr>
                     </thead>
                     <tbody className="country-table__list">
