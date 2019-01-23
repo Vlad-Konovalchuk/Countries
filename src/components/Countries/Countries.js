@@ -4,6 +4,12 @@ import React, {
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import './Countries.scss'
+import {Loader} from "../Loader/Loader";
+
+function sorting(a, b, key) {
+    return Boolean(a[key]) - Number(b[key])
+}
+
 
 export default class Countries extends Component {
     state = {
@@ -18,7 +24,6 @@ export default class Countries extends Component {
 
     handleFilter = (e) => {
         const key = e.target.value;
-        console.log(e);
         this.setState({filterKey: key}, () => this.filterCountries())
     };
 
@@ -31,21 +36,55 @@ export default class Countries extends Component {
             this.setState({filteredCountries: newArr});
         }
     };
-    handleSort = (key) => {
-        this.setState({sortKey: key}, () => this.sortCountries())
-    };
-    sortCountries = () => {
-        const {countries, sortKey, sorted} = this.state;
-        if (sortKey === null) {
+    //TODO: Clean this methods or maybe get out in utils
+
+    // handleSort = (key) => {
+    //     if (this.state.sortKey === key) {
+    //         this.sortCountries();
+    //     } else {
+    //         this.setState({sortKey: key, sorted: !this.state.sorted}, () => this.sortCountries())
+    //     }
+    // };
+    //
+    // sortCountries = () => {
+    //     const {countries, sortKey, sorted, filterKey} = this.state;
+    //     if (sortKey === null) {
+    //         return;
+    //     } else if (sorted) {
+    //         let newArr = Boolean(filterKey) ? countries.reverse().filter(country => country.region === filterKey) : countries.reverse();
+    //         this.setState({filteredCountries: newArr});
+    //     } else {
+    //         let newArr;
+    //         if (filterKey !== null) {
+    //             newArr = countries.sort(sorting(sortKey)).filter(country => country.region === filterKey);
+    //         } else {
+    //             newArr = countries.sort((a, b) => Number(a[sortKey]) - Number(b[sortKey]))
+    //         }
+    //         this.setState({filteredCountries: newArr, sorted: true});
+    //     }
+    // };
+
+    compareBy(key) {
+        return function (a, b) {
+            if (a[key] < b[key]) return -1;
+            if (a[key] > b[key]) return 1;
+            return 0;
+        };
+    }
+
+    sortBy(key) {
+        const {sortKey, filteredCountries, filterKey} = this.state;
+        if (key === sortKey) {
+            let arrayCopy = [...filteredCountries];
+            filterKey === null ? arrayCopy.reverse() : arrayCopy.reverse().filter(country => country.region === filterKey);
+            this.setState({filteredCountries: arrayCopy});
             return;
-        } else if (sorted) {
-            const newArr = countries.reverse();
-            this.setState({filteredCountries: newArr});
-        } else {
-            const newArr = countries.sort((a, b) => Number(a[sortKey]) - Number(b[sortKey]));
-            this.setState({filteredCountries: newArr, sorted: true});
         }
-    };
+        let arrayCopy = [...filteredCountries];
+        filterKey === null ? arrayCopy.sort(this.compareBy(key)) : arrayCopy.sort(this.compareBy(key)).filter(country => country.region === filterKey);
+        this.setState({filteredCountries: arrayCopy, sortKey: key});
+    }
+
 
     async componentDidMount() {
         this.setState({loading: !this.state.loading});
@@ -67,11 +106,7 @@ export default class Countries extends Component {
     render() {
         const {filteredCountries, loading, regions} = this.state;
         if (loading) {
-            return (
-                <main className='main_content'>
-                    <h2>Here will be list of a countries!</h2>
-                </main>
-            )
+            return (<Loader/>)
         }
         return (
             <main className='main_content'>
@@ -97,8 +132,8 @@ export default class Countries extends Component {
                                 })}
                             </select>}
                         </th>
-                        <th className='sorting' onClick={() => this.handleSort('area')}>Area</th>
-                        <th className='sorting' onClick={() => this.handleSort('population')}>Population</th>
+                        <th className='sorting' onClick={() => this.sortBy('area')}>Area</th>
+                        <th className='sorting' onClick={() => this.sortBy('population')}>Population</th>
                     </tr>
                     </thead>
                     <tbody className="country-table__list">

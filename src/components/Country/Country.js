@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import './Country.scss'
+import {Loader} from "../Loader/Loader";
 
 export default class Country extends PureComponent {
     state = {
@@ -10,27 +11,20 @@ export default class Country extends PureComponent {
         loading: false
     };
 
-
     async componentWillMount() {
-        const {match} = this.props
-        this.setState({loading: !this.state.loading})
+        const {match} = this.props;
+        this.setState({loading: !this.state.loading});
         const response = await axios.get(`https://restcountries.eu/rest/v2/name/${match.params.id}`)
         this.setState({
             city: response.data[0]
-        })
-        this.setState({loading: !this.state.loading})
-        console.log(this.state)
+        });
+        this.setState({loading: !this.state.loading});
     }
 
     render() {
         const {loading, city} = this.state;
-        console.log(city)
         if (loading) {
-            return (
-                <main className='main_content'>
-                    <h2>Here will be a city info!</h2>
-                </main>
-            )
+            return (<Loader/>)
         }
         return (
             <section className="country-item">
@@ -50,7 +44,7 @@ export default class Country extends PureComponent {
                     <li>
                         <strong>Top level domain: </strong>
                         <ul>
-                            {city.topLevelDomain.map(dom => <li>{city.dom}</li>)}
+                            {city.topLevelDomain.map(dom => <li key={dom}>{dom}</li>)}
                         </ul>
                     </li>
                     <li className="country-geo">
@@ -68,13 +62,13 @@ export default class Country extends PureComponent {
                     <li>
                         <strong>Languages: </strong>
                         <ul className="lang">
-                            {city.languages.map(lang => <li>{lang.name}</li>)}
+                            {city.languages.map(lang => <li key={lang.name}>{lang.name}</li>)}
                         </ul>
                     </li>
                     <li>
                         <strong>National currencies: </strong>
                         <ul>
-                            {city.currencies.map(cur => <li>{cur.name}({cur.symbol})</li>)}
+                            {city.currencies.map(cur => <li key={cur.name}>{cur.name}({cur.symbol})</li>)}
                         </ul>
                     </li>
                 </ul>
