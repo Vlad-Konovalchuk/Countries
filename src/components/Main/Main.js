@@ -1,20 +1,49 @@
 import React from 'react';
 import './Main.scss';
+import {getBiggestArea, getBiggestPopulation} from "../../utils/api";
+import {converToChart} from "../../utils/convertToChartData";
+import {Chart} from "../Chart/Chart";
+import {Loader} from "../Loader/Loader";
 
 
+export class Main extends React.PureComponent {
+    state = {
+        areaData: [],
+        populationData: [],
+        loading: false
+    };
 
-const Main = ()=>{
-  return (
-    <main className="home-block">
-      <h2 className="home__title">Countries List</h2>
-      <p  className="home__intro">
-      Here you can see information about any country in World !
-      </p>
-      <ul>
-        <h3>I`ll add more infomation and features soon</h3>
-      </ul>
-    </main>
-  )
-};
+    componentDidMount() {
+        this.setState({loading: true});
+        try {
+            getBiggestArea().then(values => {
+                    const areaData = converToChart(values, 'area');
+                    this.setState({areaData})
 
-export default Main;
+            });
+            getBiggestPopulation().then(values => {
+                    const populationData = converToChart(values, 'population');
+                    this.setState({populationData})
+            });
+        } catch (e) {
+            throw new Error(e.message)
+        } finally {
+            this.setState({loading: false})
+        }
+
+    }
+
+    render() {
+        const {areaData, populationData, loading} = this.state;
+        if (loading) {
+            return (<Loader/>)
+        }
+        return (
+            <main>
+                <Chart data={areaData}/>
+                <Chart data={populationData}/>
+            </main>
+        )
+    }
+}
+

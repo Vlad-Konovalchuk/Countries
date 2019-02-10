@@ -2,14 +2,13 @@ import React, {
     Component
 } from 'react';
 import {Link} from "react-router-dom";
-import axios from 'axios';
 import './Countries.scss'
+import {getAllCountries} from "../../utils/api";
+import {compareBy} from "../../utils/compare";
 import {Loader} from "../Loader/Loader";
+import {Select} from "../Select/Select";
 
-function sorting(a, b, key) {
-    return Boolean(a[key]) - Number(b[key])
-}
-
+//TODO: Implement Mobx or Context API
 
 export default class Countries extends Component {
     state = {
@@ -36,43 +35,9 @@ export default class Countries extends Component {
             this.setState({filteredCountries: newArr});
         }
     };
-    //TODO: Clean this methods or maybe get out in utils
 
-    // handleSort = (key) => {
-    //     if (this.state.sortKey === key) {
-    //         this.sortCountries();
-    //     } else {
-    //         this.setState({sortKey: key, sorted: !this.state.sorted}, () => this.sortCountries())
-    //     }
-    // };
-    //
-    // sortCountries = () => {
-    //     const {countries, sortKey, sorted, filterKey} = this.state;
-    //     if (sortKey === null) {
-    //         return;
-    //     } else if (sorted) {
-    //         let newArr = Boolean(filterKey) ? countries.reverse().filter(country => country.region === filterKey) : countries.reverse();
-    //         this.setState({filteredCountries: newArr});
-    //     } else {
-    //         let newArr;
-    //         if (filterKey !== null) {
-    //             newArr = countries.sort(sorting(sortKey)).filter(country => country.region === filterKey);
-    //         } else {
-    //             newArr = countries.sort((a, b) => Number(a[sortKey]) - Number(b[sortKey]))
-    //         }
-    //         this.setState({filteredCountries: newArr, sorted: true});
-    //     }
-    // };
-
-    compareBy(key) {
-        return function (a, b) {
-            if (a[key] < b[key]) return -1;
-            if (a[key] > b[key]) return 1;
-            return 0;
-        };
-    }
-
-    sortBy(key) {
+    sortBy(e) {
+        const key = e.target.dataset.category;
         const {sortKey, filteredCountries, filterKey} = this.state;
         if (key === sortKey) {
             let arrayCopy = [...filteredCountries];
@@ -81,25 +46,25 @@ export default class Countries extends Component {
             return;
         }
         let arrayCopy = [...filteredCountries];
-        filterKey === null ? arrayCopy.sort(this.compareBy(key)) : arrayCopy.sort(this.compareBy(key)).filter(country => country.region === filterKey);
+        filterKey === null ? arrayCopy.sort(compareBy(key)) : arrayCopy.sort(compareBy(key)).filter(country => country.region === filterKey);
         this.setState({filteredCountries: arrayCopy, sortKey: key});
     }
 
 
     async componentDidMount() {
-        this.setState({loading: !this.state.loading});
+        this.setState({loading: true});
         try {
-            const response = await axios.get('https://restcountries.eu/rest/v2/all');
-            const regions = response.data.map(item => item.region);
+            const response = await getAllCountries();
+            const regions = response.map(item => item.region);
             this.setState({
-                countries: response.data,
-                filteredCountries: response.data,
+                countries: response,
+                filteredCountries: response,
                 regions: [...new Set(regions)]
             });
         } catch (e) {
             throw new Error(e.message);
         } finally {
-            this.setState({loading: !this.state.loading});
+            this.setState({loading: false});
         }
     }
 
@@ -116,24 +81,12 @@ export default class Countries extends Component {
                         <th>Countries</th>
                         <th className='regions'>
                             Regions
-                            {<select
-                                className='select-region'
-                                name="changeregion"
-                                onChange={(e) => this.handleFilter(e)}>
-                                {regions.map((item, index) => {
-                                    if (item.length > 0) {
-                                        return (
-                                            <option key={index}
-                                                    value={item}
-                                            >
-                                                {item}
-                                            </option>)
-                                    }
-                                })}
-                            </select>}
+                            {regions.length > 0 ?
+                                <Select data={regions} handleChangeSelect={this.handleFilter}/> : null}
                         </th>
-                        <th className='sorting' onClick={() => this.sortBy('area')}>Area</th>
-                        <th className='sorting' onClick={() => this.sortBy('population')}>Population</th>
+                        <th className='sorting' data-category="area" onClick={(e) => this.sortBy(e)}>Area</th>
+                        <th className='sorting' data-category="population" onClick={(e) => this.sortBy(e)}>Population
+                        </th>
                     </tr>
                     </thead>
                     <tbody className="country-table__list">

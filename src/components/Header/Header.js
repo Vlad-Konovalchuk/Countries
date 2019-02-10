@@ -15,7 +15,6 @@ const Header = ({logo, toggleModal}) => {
                     <li className="header__item">
                         <Link to='/countries'>Countries</Link>
                     </li>
-                    <li className="header__item">Games</li>
                     <li className="header__item" onClick={toggleModal}>Contacts</li>
                 </ul>
             </nav>
